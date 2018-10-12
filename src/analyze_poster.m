@@ -1,5 +1,5 @@
 function output = analyze_poster(file_path, save_path)
-main_palette = csvread('data/main_palette.txt');
+main_palette = csvread('../data/main_palette.txt');
 output = [];
 try
     input_image = imread(file_path);
@@ -60,10 +60,10 @@ end
 
 safe_palette_freq_table = safe_palette_freq_table/length(map);
 safe_palette_with_freq = [main_palette safe_palette_freq_table];
-safe_palette_with_sorted_freq = sortrows(safe_palette_with_freq, 4, 'descend');
+safe_palette_with_sorted_freq = sortrows(safe_palette_with_freq, -4);
 
 clustered_palette_with_freq = [palette pcount'/length(map)];
-clustered_palette_with_sorted_freq = sortrows(clustered_palette_with_freq, 4, 'descend');
+clustered_palette_with_sorted_freq = sortrows(clustered_palette_with_freq, -4);
 
 if(~isempty(save_path))
     [~,name,ext] = fileparts(file_path);

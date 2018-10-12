@@ -42,8 +42,13 @@ inputImg(:,1) = r(:);
 inputImg(:,2) = g(:);
 inputImg(:,3) = b(:);
 inputImg = double(inputImg);
+
+
+
 disp('K-Means Processing Started');
+tic
 [idx, C] = kmeans(inputImg, noOfColors, 'EmptyAction', 'singleton');
+toc
 disp('K-Means Processing Completed');
 palette = round(C);
 

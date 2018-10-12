@@ -1,7 +1,6 @@
-function record = ParseMovieDataFileToStructure(file_path)
+function record = ParseMovieDataFileToStructure(file_path, databse_append_path)
 fid = fopen(file_path);
 line = fgetl(fid);
-append_path='C:/Users/Fluffy/Work/data/movies_data/';
 ctr = 1;
 record = struct;
 
@@ -58,7 +57,7 @@ while(line)
     record.release{ctr} = year;
     genres = strrep(strsplit(contents{4},','),' ','');
     record.genres{ctr} = genres;
-    record.path{ctr} = [append_path contents{5}(3:end-1)];
+    record.path{ctr} = [databse_append_path contents{5}(3:end-1)];
     record.country{ctr} = strsplit(contents{6},',');
     
     
